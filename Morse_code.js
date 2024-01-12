@@ -11,17 +11,35 @@ const morseCode = {
 
 function playSound() {
      
-    const sound = new Audio("C:\\Users\\USER\\OneDrive\\Documents\\VS code\\webdevelopment\\miniProject\\sound\\beep-08b.mp3");
-    sound.play();
+    var buttonClickSound = document.getElementById('buttonClickSound');
+    if (buttonClickSound) {
+        buttonClickSound.currentTime = 0;  
+        buttonClickSound.playbackRate = 1;
+        buttonClickSound.play();
+    }
+}
+function playSound2(){
+    var buttonClickSound = document.getElementById('buttonClickSound2');
+    if (buttonClickSound) {
+        buttonClickSound.currentTime = 0;  
+        buttonClickSound.playbackRate = 0.5;
+        buttonClickSound.play();
+    }
 }
 
 function displayMorse(morseArray, index) {
     if (index < morseArray.length) {
         OutputText.value += morseArray[index];
+    if(morseArray[index]==='.'){
         playSound();
+
+    }
+    else{
+        playSound2();
+    }
         setTimeout(function() {
             displayMorse(morseArray, index + 1);
-        }, 500);
+        }, 250);
     }
 }
 
